@@ -8,11 +8,6 @@ node_modules/
 #IDE file
 .idea
 
-# testing
-/coverage
-
-# production
-/build
 
 # misc
 .DS_Store
