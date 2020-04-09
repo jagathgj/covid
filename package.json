@@ -2,7 +2,7 @@
   "name": "covid19india",
   "version": "1.0.0",
   "private": true,
-  "homepage": "http://hellojagath.com/covid",
+  "homepage": "http://covid.hellojagath.com",
   "dependencies": {
     "axios": "^0.19.2",
     "chart.js": "^2.9.3",
