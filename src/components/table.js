@@ -100,7 +100,6 @@ function Table(props) {
   };
 
   doSort();
-
   return (
     <React.Fragment>
       <h5 className="table-fineprint fadeInUp" style={{animationDelay: '1.5s'}}>
@@ -114,7 +113,7 @@ function Table(props) {
               onClick={(e) => handleSort(e, props)}
             >
               <div className="heading-content">
-                <abbr title="State">State/UT</abbr>
+                <abbr title="State">District</abbr>
                 <div
                   style={{
                     display:

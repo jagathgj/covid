@@ -16,6 +16,7 @@ import TimeSeries from './timeseries';
 import Minigraph from './minigraph';
 
 function Home(props) {
+  const [deltas, setDeltas] = useState([]);
   const [states, setStates] = useState([]);
   const [stateDistrictWiseData, setStateDistrictWiseData] = useState({});
   /* const [patients, setPatients] = useState([]);*/
@@ -46,6 +47,7 @@ function Home(props) {
         axios.get('https://api.covid19india.org/updatelog/log.json'),
       ]);
       setStates(response.data.statewise);
+      setDeltas(response.data.key_values);
       setTimeseries(validateCTS(response.data.cases_time_series));
       setLastUpdated(response.data.statewise[0].lastupdatedtime);
       setStateDistrictWiseData(stateDistrictWiseResponse.data);
@@ -73,8 +75,8 @@ function Home(props) {
           <div className="header fadeInUp" style={{animationDelay: '1s'}}>
             <div className="header-mid">
               <div className="titles">
-                <h1>India COVID-19 Tracker</h1>
-                <h6 style={{fontWeight: 600}}>A Crowdsourced Initiative</h6>
+                <h1>Kerala COVID-19 Tracker</h1>
+                <h6 style={{fontWeight: 600}}>Cloned from covid19India.org</h6>
               </div>
               <div className="last-update">
                 <h6>Last Updated</h6>
@@ -95,7 +97,7 @@ function Home(props) {
             </div>
           </div>
 
-          {states.length > 1 && <Level data={states} />}
+          {states.length > 1 &&  <Level data={states} deltas={deltas} />}
           <Minigraph timeseries={timeseries} animate={true} />
           <Table
             states={states}

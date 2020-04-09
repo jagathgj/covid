@@ -41,7 +41,6 @@ function Level(props) {
     };
     parseData();
   }, [data]);
-
   return (
     <div className="Level">
       <div
@@ -51,14 +50,14 @@ function Level(props) {
         <h5>Confirmed</h5>
         <h4>
           [
-          {deltas
-            ? deltas.confirmed >= 0
-              ? '+' + deltas.confirmed
+          {props.data && props.data[8]
+            ? props.data[8].deltaconfirmed >= 0
+              ? '+' + props.data[8].deltaconfirmed
               : '+0'
             : ''}
           ]
         </h4>
-        <h1>{confirmed} </h1>
+        <h1>{props.data[8].confirmed} </h1>
       </div>
 
       <div
@@ -68,7 +67,7 @@ function Level(props) {
         <h5 className="heading">Active</h5>
         <h4>&nbsp;</h4>
         {/* <h4>[{props.deltas ? props.deltas.confirmeddelta-(props.deltas.recovereddelta+props.deltas.deceaseddelta) >=0 ? '+'+(props.deltas.confirmeddelta-(props.deltas.recovereddelta+props.deltas.deceaseddelta)).toString() : '+0' : ''}]</h4>*/}
-        <h1 className="title has-text-info">{active}</h1>
+        <h1 className="title has-text-info">{props.data[8].active}</h1>
       </div>
 
       <div
@@ -78,14 +77,14 @@ function Level(props) {
         <h5 className="heading">Recovered</h5>
         <h4>
           [
-          {deltas
-            ? deltas.recovered >= 0
-              ? '+' + deltas.recovered
+          {props.data && props.data[8]
+            ? props.data[8].deltarecovered >= 0
+              ? '+' + props.data[8].deltarecovered
               : '+0'
             : ''}
           ]
         </h4>
-        <h1 className="title has-text-success">{recoveries} </h1>
+        <h1 className="title has-text-success">{props.data[8].recovered} </h1>
       </div>
 
       <div
@@ -94,9 +93,9 @@ function Level(props) {
       >
         <h5 className="heading">Deceased</h5>
         <h4>
-          [{deltas ? (deltas.deaths >= 0 ? '+' + deltas.deaths : '+0') : ''}]
+          [{props.data && props.data[8] ? (props.data[8].deltadeaths >= 0 ? '+' + props.data && props.data[8].deltadeaths : '+0') : ''}]
         </h4>
-        <h1 className="title has-text-grey">{deaths}</h1>
+        <h1 className="title has-text-grey">{props.data[8].deaths}</h1>
       </div>
     </div>
   );
