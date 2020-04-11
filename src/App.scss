@@ -176,6 +176,9 @@ h1 {
   font-size: 24px !important;
   font-weight: 900;
   text-transform: uppercase;
+  .dark-theme & {
+    color: #ff1e56;
+  }
 }
 
 h2 {
@@ -227,6 +230,10 @@ h6 {
   margin-left: 0.25rem;
 }
 
+.dark-theme{
+  background-color: #000000;
+}
+
 .Home {
   display: flex;
   flex-direction: row;
@@ -263,6 +270,10 @@ h6 {
   font-weight: 600;
   color: $purple;
   background: $purple-light;
+
+  .dark-theme &{
+    background: #fde2e2;
+  }
 
   .snippet {
     align-self: center;
@@ -325,6 +336,9 @@ h6 {
     // margin-left: 5rem;
     cursor: pointer;
   }
+  .logo-link{
+    margin-right: 0 !important;
+  }
 }
 
 .header {
@@ -344,6 +358,10 @@ h6 {
 
   h1 {
     color: $gray-dark;
+    .dark-theme & {
+      color: #ff1e56;
+      // text-shadow:  0 0 5px #ff1e56;
+    }
   }
 
   .header-mid {
@@ -653,6 +671,25 @@ table {
 
         .dropdown {
             background: $gray-hover;
+        }
+      }
+
+      .dark-theme &.district-heading:hover {
+        background: #f1f1f1 !important;        
+      }
+
+      .dark-theme &.district{
+        color: rgba(255,255,255,0.8); 
+      }
+
+      .dark-theme &.district:hover {
+        background: $gray-hover !important; 
+        color: #ffffff;       
+      }
+
+      .dark-theme &:hover {
+        .dropdown {
+          background: $gray-hover;
         }
       }
 
@@ -1342,9 +1379,9 @@ input.switch:checked::after {
 footer {
   display: flex;
   flex-direction: column;
-  margin-bottom: 5rem;
+  padding-bottom: 5rem;
   justify-content: center;
-  margin-top: 5rem;
+  padding-top: 5rem;
 
   & > * {
     align-self: center;
@@ -1505,7 +1542,10 @@ footer {
     justify-content: space-between;
     margin-left: 5.25rem;
     h1 {
-      color: $pblue;
+      // color: $pblue;
+      .dark-theme & {
+        color: $cherry;
+      }
     }
 
     h3 {
@@ -2343,15 +2383,25 @@ select {
       margin: 0;
     }
 
+    h4 {
+      .dark-theme &{
+        color: #ffffff;
+      }
+    }
+
     h5 {
       color: $gray-mid;
       margin-bottom: 0.15rem;
+      .dark-theme &{
+        color: rgba(255,255,255,0.5);;
+      }
     }
 
     h4 {
       color: $gray;
       font-weight: 600;
     }
+   
   }
 
   .button {
@@ -2474,9 +2524,15 @@ select {
     img {
       width: 2rem;
       height: 2rem;
-      margin-left: 1rem;
-      margin-right: -1rem;
+      // margin-left: 1rem;
+      // margin-right: -1rem;
       cursor: pointer;
+    }
+    .navbar-right{
+      a{
+        margin-left: 0.75rem !important;
+        margin-right: 0 !important;
+      }
     }
   }
 
@@ -2605,9 +2661,7 @@ select {
   }
 
   .Navbar {
-    justify-content: space-between;
-    .navbar-right {
-    }
+    justify-content: center;
 
     .navbar-burger {
       align-self: center;

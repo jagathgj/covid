@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,6 +20,7 @@ import DeepDive from './components/deepdive';
 const history = require('history').createBrowserHistory;
 
 function App() {
+  const [themeChange, setThemeChange] = useState(false);
   const pages = [
     {
       pageLink: '/',
@@ -53,13 +54,17 @@ function App() {
     },
   ];
 
+  const handleThemeChange = (e) => {
+    setThemeChange((prevState) => !prevState);
+  };
+
   return (
-    <div className="App">
+    <div className={themeChange && themeChange ? 'App' : 'App dark-theme'}>
       <Router history={history}>
         <Route
           render={({location}) => (
             <div className="Almighty-Router">
-              <Navbar pages={pages} />
+              <Navbar pages={pages} handleThemeChange={handleThemeChange} />
               <Banner />
               <Route exact path="/" render={() => <Redirect to="/" />} />
               <Switch location={location}>

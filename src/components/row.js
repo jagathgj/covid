@@ -83,8 +83,6 @@ function Row(props) {
 
   return (
     <React.Fragment>
-      
-
       <tr
         className={'state-last-update'}
         style={{display: props.reveal && !props.total ? '' : 'none'}}
@@ -110,9 +108,7 @@ function Row(props) {
         </td>
       </tr>
 
-      <tr
-        className={`sticky district-heading`}
-      >
+      <tr className={`sticky district-heading`}>
         <td className="sticky">
           <div className="heading-content">
             <abbr title="District">District</abbr>
@@ -158,17 +154,44 @@ function Row(props) {
         </td>
         <td className="sticky">
           <div className="heading-content">
-            <abbr title="District">Active</abbr>
+            <abbr
+              className={`${window.innerWidth <= 769 ? 'is-blue' : ''}`}
+              title="District"
+            >
+              {window.innerWidth <= 769
+                ? window.innerWidth <= 375
+                  ? 'A'
+                  : 'Actv'
+                : 'Active'}
+            </abbr>
           </div>
         </td>
         <td className="sticky">
           <div className="heading-content">
-            <abbr title="District">Recovered</abbr>
+            <abbr
+              className={`${window.innerWidth <= 769 ? 'is-green' : ''}`}
+              title="District"
+            >
+              {window.innerWidth <= 769
+                ? window.innerWidth <= 375
+                  ? 'R'
+                  : 'Rcvrd'
+                : 'Recovered'}
+            </abbr>
           </div>
         </td>
         <td className="sticky">
           <div className="heading-content">
-            <abbr title="District">Deceased</abbr>
+            <abbr
+              className={`${window.innerWidth <= 769 ? 'is-gray' : ''}`}
+              title="District"
+            >
+              {window.innerWidth <= 769
+                ? window.innerWidth <= 375
+                  ? 'D'
+                  : 'Dcsd'
+                : 'Deceased'}
+            </abbr>
           </div>
         </td>
       </tr>

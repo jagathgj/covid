@@ -19,35 +19,48 @@ function Navbar(props) {
           transition: 'all 0.3s ease-in-out',
         }}
       >
-         <div className="navbar-left">
-              <Link to={props.pages[0].pageLink}>
-                <span
-                  {...navLinkProps(props.pages[0].pageLink, props.pages[0].animationDelayForNavbar)}
-                >
-                  {props.pages[0].displayName}
-                </span>
-              </Link>
+        <div className="navbar-left">
+          <Link to={props.pages[0].pageLink}>
+            <span
+              {...navLinkProps(
+                props.pages[0].pageLink,
+                props.pages[0].animationDelayForNavbar
+              )}
+            >
+              {props.pages[0].displayName}
+            </span>
+          </Link>
         </div>
-        <img
-          className="fadeInUp logo"
-          alt="Kerala COVID-19 Tracker"
-          src="/icon.png"
-          style={{
-            animationDelay: '0.0s',
-            transition: 'all 0.3s ease-in-out',
-          }}
-        />
+        <a
+          className="logo-link"
+          href="javascript:void(0)"
+          onClick={() => props.handleThemeChange()}
+          style={{textDecoration: 'none', display: 'inline-flex'}}
+          title={`click logo to switch theme`}
+        >
+          <img
+            className="fadeInUp logo"
+            alt="Kerala COVID-19 Tracker"
+            src="/icon.png"
+            style={{
+              animationDelay: '0.0s',
+              transition: 'all 0.3s ease-in-out',
+            }}
+          />
+        </a>
 
         <div className="navbar-right">
-              <Link to={props.pages[1].pageLink}>
-                <span
-                  {...navLinkProps(props.pages[1].pageLink, props.pages[1].animationDelayForNavbar)}
-                >
-                  {props.pages[1].displayName}
-                </span>
-              </Link>
+          <Link to={props.pages[1].pageLink}>
+            <span
+              {...navLinkProps(
+                props.pages[1].pageLink,
+                props.pages[1].animationDelayForNavbar
+              )}
+            >
+              {props.pages[1].displayName}
+            </span>
+          </Link>
         </div>
-
       </div>
     );
   } else {
