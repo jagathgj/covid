@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 
 function Level(props) {
   const [data, setData] = useState(props.data);
+  const [districtIndex, setdistrictIndex] = useState(0);
   const [confirmed, setConfirmed] = useState(0);
   const [active, setActive] = useState(0);
   const [recoveries, setRecoveries] = useState(0);
@@ -19,6 +20,7 @@ function Level(props) {
       let recoveries = 0;
       let deaths = 0;
       let deltas = {};
+      const districtIndex = parseInt(data.findIndex(p => p.statecode === "KL"));
       data.forEach((state, index) => {
         if (index !== 0) {
           confirmed += parseInt(state.confirmed);
@@ -38,6 +40,7 @@ function Level(props) {
       setRecoveries(recoveries);
       setDeaths(deaths);
       setDeltas(deltas);
+      setdistrictIndex(districtIndex);
     };
     parseData();
   }, [data]);
@@ -50,14 +53,14 @@ function Level(props) {
         <h5>Confirmed</h5>
         <h4>
           [
-          {props.data && props.data[8]
-            ? props.data[8].deltaconfirmed >= 0
-              ? '+' + props.data[8].deltaconfirmed
+          {props.data && props.data[data.findIndex(p => p.statecode === "KL")]
+            ? props.data[data.findIndex(p => p.statecode === "KL")].deltaconfirmed >= 0
+              ? '+' + props.data[data.findIndex(p => p.statecode === "KL")].deltaconfirmed
               : '+0'
             : ''}
           ]
         </h4>
-        <h1>{props.data[8].confirmed} </h1>
+        <h1>{props.data[data.findIndex(p => p.statecode === "KL")].confirmed} </h1>
       </div>
 
       <div
@@ -67,7 +70,7 @@ function Level(props) {
         <h5 className="heading">Active</h5>
         <h4>&nbsp;</h4>
         {/* <h4>[{props.deltas ? props.deltas.confirmeddelta-(props.deltas.recovereddelta+props.deltas.deceaseddelta) >=0 ? '+'+(props.deltas.confirmeddelta-(props.deltas.recovereddelta+props.deltas.deceaseddelta)).toString() : '+0' : ''}]</h4>*/}
-        <h1 className="title has-text-info">{props.data[8].active}</h1>
+        <h1 className="title has-text-info">{props.data[data.findIndex(p => p.statecode === "KL")].active}</h1>
       </div>
 
       <div
@@ -77,14 +80,14 @@ function Level(props) {
         <h5 className="heading">Recovered</h5>
         <h4>
           [
-          {props.data && props.data[8]
-            ? props.data[8].deltarecovered >= 0
-              ? '+' + props.data[8].deltarecovered
+          {props.data && props.data[data.findIndex(p => p.statecode === "KL")]
+            ? props.data[data.findIndex(p => p.statecode === "KL")].deltarecovered >= 0
+              ? '+' + props.data[data.findIndex(p => p.statecode === "KL")].deltarecovered
               : '+0'
             : ''}
           ]
         </h4>
-        <h1 className="title has-text-success">{props.data[8].recovered} </h1>
+        <h1 className="title has-text-success">{props.data[data.findIndex(p => p.statecode === "KL")].recovered} </h1>
       </div>
 
       <div
@@ -93,9 +96,9 @@ function Level(props) {
       >
         <h5 className="heading">Deceased</h5>
         <h4>
-          [{props.data && props.data[8] ? (props.data[8].deltadeaths >= 0 ? '+' + props.data && props.data[8].deltadeaths : '+0') : ''}]
+          [{props.data && props.data[data.findIndex(p => p.statecode === "KL")] ? (props.data[data.findIndex(p => p.statecode === "KL")].deltadeaths >= 0 ? '+' + props.data && props.data[data.findIndex(p => p.statecode === "KL")].deltadeaths : '+0') : ''}]
         </h4>
-        <h1 className="title has-text-grey">{props.data[8].deaths}</h1>
+        <h1 className="title has-text-grey">{props.data[data.findIndex(p => p.statecode === "KL")].deaths}</h1>
       </div>
     </div>
   );

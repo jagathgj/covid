@@ -278,15 +278,15 @@ h6 {
   display: flex;
   flex-direction: row;
   height: 4.5rem;
-  justify-content: space-around;
+  justify-content: center;
   text-transform: uppercase;
   font-weight: 900;
 
   @include navbarReveal($gray-light);
 
-  .navbar-left {
-    margin-left: 2rem;
-    flex: 1;
+  .navbar-left,  .navbar-right {
+    // margin-left: 2rem;
+    // flex: 1;
     align-self: center;
 
     a {
@@ -308,6 +308,12 @@ h6 {
     }
   }
 
+  .navbar-right{
+    a {
+      margin-left: 2rem;
+    }
+  }
+
   .focused {
     color: $gray;
   }
@@ -316,7 +322,7 @@ h6 {
     width: 3rem;
     height: 3rem;
     align-self: center;
-    margin-left: 5rem;
+    // margin-left: 5rem;
     cursor: pointer;
   }
 }
@@ -659,6 +665,10 @@ table {
         height: 0.5rem;
         background: #fff !important;
       }
+      &.sticky {
+        top: 4px;
+        background: $gray-opaque;
+      }
     }
 
     td {
@@ -694,7 +704,9 @@ table {
         }
       }
     }
-	
+  
+    
+
     .table__count-text {
       margin-left: 0.25rem;
     }
@@ -724,7 +736,7 @@ table {
     }
 
     .district-heading {
-      transform: translateX(1rem);
+      // transform: translateX(1rem);
       background: $gray-light;
 
       td {
@@ -761,9 +773,9 @@ table {
 
     max-width: 10rem;
 
-    .district {
-      transform: translateX(1rem);
-    }
+    // .district {
+    //   transform: translateX(1rem);
+    // }
   }
 
   .affected-count {

@@ -83,78 +83,7 @@ function Row(props) {
 
   return (
     <React.Fragment>
-      <tr
-        className={props.total ? 'state is-total' : 'state'}
-        onMouseEnter={() => props.onHighlightState?.(state, props.index)}
-        onMouseLeave={() => props.onHighlightState?.()}
-        touchstart={() => props.onHighlightState?.(state, props.index)}
-        onClick={!props.total ? handleReveal : null}
-        style={{background: props.index % 2 === 0 ? '#f8f9fa' : ''}}
-      >
-        <td style={{fontWeight: 600}}>
-          <div className="table__title-wrapper">
-            <span
-              className={`dropdown ${
-                props.reveal ? 'rotateRightDown' : 'rotateDownRight'
-              }`}
-              style={{display: !props.total ? '' : 'none'}}
-              onClick={() => {
-                handleReveal();
-              }}
-            >
-              <Icon.ChevronDown />
-            </span>
-            {state.state}
-            {state.state === 'West Bengal' && (
-              <Link to="/faq">
-                <Icon.HelpCircle className="height-22" />
-              </Link>
-            )}
-          </div>
-        </td>
-        <td>
-          <span className="deltas" style={{color: '#ff073a'}}>
-            {state.deltaconfirmed > 0 && <Icon.ArrowUp />}
-            {state.deltaconfirmed > 0 ? `${state.deltaconfirmed}` : ''}
-          </span>
-          <span className="table__count-text">
-            {parseInt(state.confirmed) === 0 ? '-' : state.confirmed}
-          </span>
-        </td>
-        <td
-          style={{color: parseInt(state.active) === 0 ? '#B5B5B5' : 'inherit'}}
-        >
-          {/* <span className="deltas" style={{color: '#007bff'}}>
-            {!state.delta.active==0 && <Icon.ArrowUp/>}
-            {state.delta.active>0 ? `${state.delta.active}` : ''}
-          </span>*/}
-          {parseInt(state.active) === 0 ? '-' : state.active}
-        </td>
-        <td
-          style={{
-            color: parseInt(state.recovered) === 0 ? '#B5B5B5' : 'inherit',
-          }}
-        >
-          <span className="deltas" style={{color: '#28a745'}}>
-            {state.deltarecovered > 0 && <Icon.ArrowUp />}
-            {state.deltarecovered > 0 ? `${state.deltarecovered}` : ''}
-          </span>
-          <span className="table__count-text">
-            {parseInt(state.recovered) === 0 ? '-' : state.recovered}
-          </span>
-        </td>
-        <td
-          style={{color: parseInt(state.deaths) === 0 ? '#B5B5B5' : 'inherit'}}
-        >
-          <span className="deltas" style={{color: '#6c757d'}}>
-            {state.deltadeaths > 0 && <Icon.ArrowUp />}
-            {state.deltadeaths > 0 ? `${state.deltadeaths}` : ''}
-          </span>
-          <span className="table__count-text">
-            {parseInt(state.deaths) === 0 ? '-' : state.deaths}
-          </span>
-        </td>
-      </tr>
+      
 
       <tr
         className={'state-last-update'}
@@ -182,10 +111,9 @@ function Row(props) {
       </tr>
 
       <tr
-        className={`district-heading`}
-        style={{display: props.reveal && !props.total ? '' : 'none'}}
+        className={`sticky district-heading`}
       >
-        <td onClick={(e) => handleSort('district')}>
+        <td className="sticky">
           <div className="heading-content">
             <abbr title="District">District</abbr>
             <div
@@ -202,7 +130,7 @@ function Row(props) {
             </div>
           </div>
         </td>
-        <td onClick={(e) => handleSort('confirmed')}>
+        <td className="sticky" onClick={(e) => handleSort('confirmed')}>
           <div className="heading-content">
             <abbr
               className={`${window.innerWidth <= 769 ? 'is-cherry' : ''}`}
@@ -228,6 +156,21 @@ function Row(props) {
             </div>
           </div>
         </td>
+        <td className="sticky">
+          <div className="heading-content">
+            <abbr title="District">Active</abbr>
+          </div>
+        </td>
+        <td className="sticky">
+          <div className="heading-content">
+            <abbr title="District">Recovered</abbr>
+          </div>
+        </td>
+        <td className="sticky">
+          <div className="heading-content">
+            <abbr title="District">Deceased</abbr>
+          </div>
+        </td>
       </tr>
 
       {sortedDistricts &&
@@ -239,10 +182,10 @@ function Row(props) {
                 <tr
                   key={index}
                   className={`district`}
-                  style={{
-                    display: props.reveal && !props.total ? '' : 'none',
-                    background: index % 2 === 0 ? '#f8f9fa' : '',
-                  }}
+                  // style={{
+                  //   display: props.reveal && !props.total ? '' : 'none',
+                  //   background: index % 2 === 0 ? '#f8f9fa' : '',
+                  // }}
                   onMouseEnter={() =>
                     props.onHighlightDistrict?.(district, state, props.index)
                   }

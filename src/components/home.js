@@ -67,7 +67,7 @@ function Home(props) {
     if (!state && !index && !district) setRegionHighlighted(null);
     else setRegionHighlighted({district, state, index});
   };
-
+  console.log("timeseries from home", timeseries);
   return (
     <React.Fragment>
       <div className="Home">

@@ -106,7 +106,7 @@ function Table(props) {
         Compiled from State Govt. numbers <Link to="/faq">Know More</Link>
       </h5>
       <table className="table fadeInUp" style={{animationDelay: '1.8s'}}>
-        <thead>
+        {/* <thead>
           <tr>
             <th
               className="sticky state-heading"
@@ -238,11 +238,13 @@ function Table(props) {
               </div>
             </th>
           </tr>
-        </thead>
+        </thead> */}
 
         <tbody>
-          {states.map((state, index) => {
-            if (index !== 0 && state.confirmed > 0) {
+          {
+          states.map((state, index) => {
+            // console.log("my states", states.findIndex(p => p.statecode === "KL"));
+            if (index !== 0 && state.statecode==="KL" && state.confirmed > 0) {
               return (
                 <Row
                   key={index}
@@ -264,16 +266,7 @@ function Table(props) {
             return null;
           })}
         </tbody>
-
-        <tbody>
-          {states.length > 1 && props.summary === false && (
-            <Row key={0} state={states[0]} total={true} />
-          )}
-        </tbody>
       </table>
-      <h5 className="table-fineprint fadeInUp" style={{animationDelay: '1s'}}>
-        {count} States/UTS Affected
-      </h5>
     </React.Fragment>
   );
 }

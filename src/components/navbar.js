@@ -19,6 +19,15 @@ function Navbar(props) {
           transition: 'all 0.3s ease-in-out',
         }}
       >
+         <div className="navbar-left">
+              <Link to={props.pages[0].pageLink}>
+                <span
+                  {...navLinkProps(props.pages[0].pageLink, props.pages[0].animationDelayForNavbar)}
+                >
+                  {props.pages[0].displayName}
+                </span>
+              </Link>
+        </div>
         <img
           className="fadeInUp logo"
           alt="Kerala COVID-19 Tracker"
@@ -29,21 +38,16 @@ function Navbar(props) {
           }}
         />
 
-        <div className="navbar-left">
-          {props.pages.map((page, i) => {
-            return (
-              <Link to={page.pageLink} key={i}>
+        <div className="navbar-right">
+              <Link to={props.pages[1].pageLink}>
                 <span
-                  {...navLinkProps(page.pageLink, page.animationDelayForNavbar)}
+                  {...navLinkProps(props.pages[1].pageLink, props.pages[1].animationDelayForNavbar)}
                 >
-                  {page.displayName}
+                  {props.pages[1].displayName}
                 </span>
               </Link>
-            );
-          })}
         </div>
 
-        <div className="navbar-right"></div>
       </div>
     );
   } else {
